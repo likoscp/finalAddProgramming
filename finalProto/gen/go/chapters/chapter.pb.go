@@ -661,11 +661,11 @@ var File_chapters_chapter_proto protoreflect.FileDescriptor
 
 const file_chapters_chapter_proto_rawDesc = "" +
 	"\n" +
-	"\x16chapters/chapter.proto\x12\x06comics\"N\n" +
+	"\x16chapters/chapter.proto\x12\bchapters\"N\n" +
 	"\x04Page\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\timage_url\x18\x02 \x01(\tR\bimageUrl\x12\x19\n" +
-	"\bpage_num\x18\x03 \x01(\x05R\apageNum\"\xd7\x01\n" +
+	"\bpage_num\x18\x03 \x01(\x05R\apageNum\"\xd9\x01\n" +
 	"\aChapter\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
@@ -673,8 +673,8 @@ const file_chapters_chapter_proto_rawDesc = "" +
 	"\x05likes\x18\x04 \x01(\x05R\x05likes\x12\x1a\n" +
 	"\bdislikes\x18\x05 \x01(\x05R\bdislikes\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\x06 \x01(\tR\tcreatedAt\x12\"\n" +
-	"\x05pages\x18\a \x03(\v2\f.comics.PageR\x05pages\x12\x19\n" +
+	"created_at\x18\x06 \x01(\tR\tcreatedAt\x12$\n" +
+	"\x05pages\x18\a \x03(\v2\x0e.chapters.PageR\x05pages\x12\x19\n" +
 	"\bcomic_id\x18\b \x01(\tR\acomicId\"\x91\x01\n" +
 	"\x14CreateChapterRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x16\n" +
@@ -685,9 +685,9 @@ const file_chapters_chapter_proto_rawDesc = "" +
 	"\x15CreateChapterResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"'\n" +
 	"\x15GetChapterByIDRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
-	"\vChapterList\x12+\n" +
-	"\bchapters\x18\x01 \x03(\v2\x0f.comics.ChapterR\bchapters\"\xa1\x01\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"<\n" +
+	"\vChapterList\x12-\n" +
+	"\bchapters\x18\x01 \x03(\v2\x11.chapters.ChapterR\bchapters\"\xa1\x01\n" +
 	"\x14UpdateChapterRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
@@ -704,14 +704,14 @@ const file_chapters_chapter_proto_rawDesc = "" +
 	"\bpage_num\x18\x03 \x01(\x05R\apageNum\"!\n" +
 	"\x0fAddPageResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"\a\n" +
-	"\x05Empty2\x8d\x03\n" +
-	"\x0fChaptersService\x12L\n" +
-	"\rCreateChapter\x12\x1c.comics.CreateChapterRequest\x1a\x1d.comics.CreateChapterResponse\x12@\n" +
-	"\x0eGetChapterByID\x12\x1d.comics.GetChapterByIDRequest\x1a\x0f.comics.Chapter\x122\n" +
-	"\fListChapters\x12\r.comics.Empty\x1a\x13.comics.ChapterList\x12<\n" +
-	"\rUpdateChapter\x12\x1c.comics.UpdateChapterRequest\x1a\r.comics.Empty\x12<\n" +
-	"\rDeleteChapter\x12\x1c.comics.DeleteChapterRequest\x1a\r.comics.Empty\x12:\n" +
-	"\aAddPage\x12\x16.comics.AddPageRequest\x1a\x17.comics.AddPageResponseB Z\x1elikoscp.chapters.v1;chaptersv1b\x06proto3"
+	"\x05Empty2\xa5\x03\n" +
+	"\x0fChaptersService\x12P\n" +
+	"\rCreateChapter\x12\x1e.chapters.CreateChapterRequest\x1a\x1f.chapters.CreateChapterResponse\x12D\n" +
+	"\x0eGetChapterByID\x12\x1f.chapters.GetChapterByIDRequest\x1a\x11.chapters.Chapter\x126\n" +
+	"\fListChapters\x12\x0f.chapters.Empty\x1a\x15.chapters.ChapterList\x12@\n" +
+	"\rUpdateChapter\x12\x1e.chapters.UpdateChapterRequest\x1a\x0f.chapters.Empty\x12@\n" +
+	"\rDeleteChapter\x12\x1e.chapters.DeleteChapterRequest\x1a\x0f.chapters.Empty\x12>\n" +
+	"\aAddPage\x12\x18.chapters.AddPageRequest\x1a\x19.chapters.AddPageResponseB Z\x1elikoscp.chapters.v1;chaptersv1b\x06proto3"
 
 var (
 	file_chapters_chapter_proto_rawDescOnce sync.Once
@@ -727,33 +727,33 @@ func file_chapters_chapter_proto_rawDescGZIP() []byte {
 
 var file_chapters_chapter_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_chapters_chapter_proto_goTypes = []any{
-	(*Page)(nil),                  // 0: comics.Page
-	(*Chapter)(nil),               // 1: comics.Chapter
-	(*CreateChapterRequest)(nil),  // 2: comics.CreateChapterRequest
-	(*CreateChapterResponse)(nil), // 3: comics.CreateChapterResponse
-	(*GetChapterByIDRequest)(nil), // 4: comics.GetChapterByIDRequest
-	(*ChapterList)(nil),           // 5: comics.ChapterList
-	(*UpdateChapterRequest)(nil),  // 6: comics.UpdateChapterRequest
-	(*DeleteChapterRequest)(nil),  // 7: comics.DeleteChapterRequest
-	(*AddPageRequest)(nil),        // 8: comics.AddPageRequest
-	(*AddPageResponse)(nil),       // 9: comics.AddPageResponse
-	(*Empty)(nil),                 // 10: comics.Empty
+	(*Page)(nil),                  // 0: chapters.Page
+	(*Chapter)(nil),               // 1: chapters.Chapter
+	(*CreateChapterRequest)(nil),  // 2: chapters.CreateChapterRequest
+	(*CreateChapterResponse)(nil), // 3: chapters.CreateChapterResponse
+	(*GetChapterByIDRequest)(nil), // 4: chapters.GetChapterByIDRequest
+	(*ChapterList)(nil),           // 5: chapters.ChapterList
+	(*UpdateChapterRequest)(nil),  // 6: chapters.UpdateChapterRequest
+	(*DeleteChapterRequest)(nil),  // 7: chapters.DeleteChapterRequest
+	(*AddPageRequest)(nil),        // 8: chapters.AddPageRequest
+	(*AddPageResponse)(nil),       // 9: chapters.AddPageResponse
+	(*Empty)(nil),                 // 10: chapters.Empty
 }
 var file_chapters_chapter_proto_depIdxs = []int32{
-	0,  // 0: comics.Chapter.pages:type_name -> comics.Page
-	1,  // 1: comics.ChapterList.chapters:type_name -> comics.Chapter
-	2,  // 2: comics.ChaptersService.CreateChapter:input_type -> comics.CreateChapterRequest
-	4,  // 3: comics.ChaptersService.GetChapterByID:input_type -> comics.GetChapterByIDRequest
-	10, // 4: comics.ChaptersService.ListChapters:input_type -> comics.Empty
-	6,  // 5: comics.ChaptersService.UpdateChapter:input_type -> comics.UpdateChapterRequest
-	7,  // 6: comics.ChaptersService.DeleteChapter:input_type -> comics.DeleteChapterRequest
-	8,  // 7: comics.ChaptersService.AddPage:input_type -> comics.AddPageRequest
-	3,  // 8: comics.ChaptersService.CreateChapter:output_type -> comics.CreateChapterResponse
-	1,  // 9: comics.ChaptersService.GetChapterByID:output_type -> comics.Chapter
-	5,  // 10: comics.ChaptersService.ListChapters:output_type -> comics.ChapterList
-	10, // 11: comics.ChaptersService.UpdateChapter:output_type -> comics.Empty
-	10, // 12: comics.ChaptersService.DeleteChapter:output_type -> comics.Empty
-	9,  // 13: comics.ChaptersService.AddPage:output_type -> comics.AddPageResponse
+	0,  // 0: chapters.Chapter.pages:type_name -> chapters.Page
+	1,  // 1: chapters.ChapterList.chapters:type_name -> chapters.Chapter
+	2,  // 2: chapters.ChaptersService.CreateChapter:input_type -> chapters.CreateChapterRequest
+	4,  // 3: chapters.ChaptersService.GetChapterByID:input_type -> chapters.GetChapterByIDRequest
+	10, // 4: chapters.ChaptersService.ListChapters:input_type -> chapters.Empty
+	6,  // 5: chapters.ChaptersService.UpdateChapter:input_type -> chapters.UpdateChapterRequest
+	7,  // 6: chapters.ChaptersService.DeleteChapter:input_type -> chapters.DeleteChapterRequest
+	8,  // 7: chapters.ChaptersService.AddPage:input_type -> chapters.AddPageRequest
+	3,  // 8: chapters.ChaptersService.CreateChapter:output_type -> chapters.CreateChapterResponse
+	1,  // 9: chapters.ChaptersService.GetChapterByID:output_type -> chapters.Chapter
+	5,  // 10: chapters.ChaptersService.ListChapters:output_type -> chapters.ChapterList
+	10, // 11: chapters.ChaptersService.UpdateChapter:output_type -> chapters.Empty
+	10, // 12: chapters.ChaptersService.DeleteChapter:output_type -> chapters.Empty
+	9,  // 13: chapters.ChaptersService.AddPage:output_type -> chapters.AddPageResponse
 	8,  // [8:14] is the sub-list for method output_type
 	2,  // [2:8] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name

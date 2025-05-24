@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ChaptersService_CreateChapter_FullMethodName  = "/comics.ChaptersService/CreateChapter"
-	ChaptersService_GetChapterByID_FullMethodName = "/comics.ChaptersService/GetChapterByID"
-	ChaptersService_ListChapters_FullMethodName   = "/comics.ChaptersService/ListChapters"
-	ChaptersService_UpdateChapter_FullMethodName  = "/comics.ChaptersService/UpdateChapter"
-	ChaptersService_DeleteChapter_FullMethodName  = "/comics.ChaptersService/DeleteChapter"
-	ChaptersService_AddPage_FullMethodName        = "/comics.ChaptersService/AddPage"
+	ChaptersService_CreateChapter_FullMethodName  = "/chapters.ChaptersService/CreateChapter"
+	ChaptersService_GetChapterByID_FullMethodName = "/chapters.ChaptersService/GetChapterByID"
+	ChaptersService_ListChapters_FullMethodName   = "/chapters.ChaptersService/ListChapters"
+	ChaptersService_UpdateChapter_FullMethodName  = "/chapters.ChaptersService/UpdateChapter"
+	ChaptersService_DeleteChapter_FullMethodName  = "/chapters.ChaptersService/DeleteChapter"
+	ChaptersService_AddPage_FullMethodName        = "/chapters.ChaptersService/AddPage"
 )
 
 // ChaptersServiceClient is the client API for ChaptersService service.
@@ -278,7 +278,7 @@ func _ChaptersService_AddPage_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ChaptersService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "comics.ChaptersService",
+	ServiceName: "chapters.ChaptersService",
 	HandlerType: (*ChaptersServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
