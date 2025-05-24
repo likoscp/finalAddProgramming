@@ -117,9 +117,10 @@ message UpdateComicRequest {
   string title = 5;
   string description = 6;
   string cover_image = 7;
-  repeated string genre_ids = 8;
+  int32 rating = 8;
   string status = 9;
   string comic_release_date = 10;
+  int32 views = 11;
 }
 
 message DeleteComicRequest {

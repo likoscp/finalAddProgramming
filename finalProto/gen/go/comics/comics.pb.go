@@ -950,9 +950,10 @@ type UpdateComicRequest struct {
 	Title            string                 `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
 	Description      string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	CoverImage       string                 `protobuf:"bytes,7,opt,name=cover_image,json=coverImage,proto3" json:"cover_image,omitempty"`
-	GenreIds         []string               `protobuf:"bytes,8,rep,name=genre_ids,json=genreIds,proto3" json:"genre_ids,omitempty"`
+	Rating           int32                  `protobuf:"varint,8,opt,name=rating,proto3" json:"rating,omitempty"`
 	Status           string                 `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
 	ComicReleaseDate string                 `protobuf:"bytes,10,opt,name=comic_release_date,json=comicReleaseDate,proto3" json:"comic_release_date,omitempty"`
+	Views            int32                  `protobuf:"varint,11,opt,name=views,proto3" json:"views,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1036,11 +1037,11 @@ func (x *UpdateComicRequest) GetCoverImage() string {
 	return ""
 }
 
-func (x *UpdateComicRequest) GetGenreIds() []string {
+func (x *UpdateComicRequest) GetRating() int32 {
 	if x != nil {
-		return x.GenreIds
+		return x.Rating
 	}
-	return nil
+	return 0
 }
 
 func (x *UpdateComicRequest) GetStatus() string {
@@ -1055,6 +1056,13 @@ func (x *UpdateComicRequest) GetComicReleaseDate() string {
 		return x.ComicReleaseDate
 	}
 	return ""
+}
+
+func (x *UpdateComicRequest) GetViews() int32 {
+	if x != nil {
+		return x.Views
+	}
+	return 0
 }
 
 type DeleteComicRequest struct {
@@ -1189,7 +1197,7 @@ const file_comics_comics_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"2\n" +
 	"\tComicList\x12%\n" +
 	"\x06comics\x18\x01 \x03(\v2\r.comics.ComicR\x06comics\"\a\n" +
-	"\x05Empty\"\xbf\x02\n" +
+	"\x05Empty\"\xd0\x02\n" +
 	"\x12UpdateComicRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tauthor_id\x18\x02 \x01(\tR\bauthorId\x12#\n" +
@@ -1198,11 +1206,12 @@ const file_comics_comics_proto_rawDesc = "" +
 	"\x05title\x18\x05 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1f\n" +
 	"\vcover_image\x18\a \x01(\tR\n" +
-	"coverImage\x12\x1b\n" +
-	"\tgenre_ids\x18\b \x03(\tR\bgenreIds\x12\x16\n" +
+	"coverImage\x12\x16\n" +
+	"\x06rating\x18\b \x01(\x05R\x06rating\x12\x16\n" +
 	"\x06status\x18\t \x01(\tR\x06status\x12,\n" +
 	"\x12comic_release_date\x18\n" +
-	" \x01(\tR\x10comicReleaseDate\"$\n" +
+	" \x01(\tR\x10comicReleaseDate\x12\x14\n" +
+	"\x05views\x18\v \x01(\x05R\x05views\"$\n" +
 	"\x12DeleteComicRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id2\xb7\x02\n" +
 	"\rComicsService\x12F\n" +

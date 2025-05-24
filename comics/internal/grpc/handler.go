@@ -189,10 +189,33 @@ func (h *ComicGRPCHandler) UpdateComic(ctx context.Context, req *comicpb.UpdateC
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid comic id format: %v", err)
 	}
+	translatorID, err := strconv.ParseUint(req.TranslatorId, 10, 64)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid translator id format: %v", err)
+	}
+	authorID, err := strconv.ParseUint(req.AuthorId, 10, 64)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid author id format: %v", err)
+	}
+	artistID, err := strconv.ParseUint(req.ArtistId, 10, 64)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid artist id format: %v", err)
+	}
 	err = h.service.UpdateComic(ctx, uint(comicID), models.Comic{
 		Title:            req.Title,
 		ComicReleaseDate: time.Time{},
 		Status:           req.Status,
+		Description:      req.Description,
+		CoverImage:       req.CoverImage,
+		UpdatedAt:        time.Now(),
+		Views:            req.Views,
+		Rating:           req.Rating,
+		TranslatorID:     uint(translatorID),
+		AuthorID:         uint(authorID),
+		ArtistID:         uint(artistID),
+		// AltTitles:        req.AltTitles, 
+		// Genres:           req.Genres,
+
 	})
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to update: %v", err)
