@@ -71,7 +71,10 @@ func (s *Server) StartGRPC() error {
 	comicGRPC := grpcCustom.NewComicGRPCHandler(comicService) 
 	comicsPb.RegisterComicsServiceServer(s.grpcServer, comicGRPC)
 	reflection.Register(s.grpcServer)
-
+	chapterGRPC := grpcCustom.NewChapterGRPCHandler(service.NewChaptersService(repository.NewChapterRepository(db)))
+	
+	comicsPb.RegisterChaptersServiceServer(s.grpcServer, chapterGRPC)
+	reflection.Register(s.grpcServer)
 	log.Println("🚀 gRPC server started on port " + s.cfg.Addr)
 	return s.grpcServer.Serve(lis)
 }
