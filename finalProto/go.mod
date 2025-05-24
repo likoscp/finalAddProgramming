@@ -1,4 +1,4 @@
-module github.com/likoscp/finalAddPrograming/finalProto
+module github.com/likoscp/finalAddProgramming/finalProto
 
 go 1.23
 

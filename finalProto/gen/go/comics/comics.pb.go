@@ -97,20 +97,126 @@ func (x *Chapter) GetStatus() string {
 	return ""
 }
 
+type AltTitle struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AltTitle) Reset() {
+	*x = AltTitle{}
+	mi := &file_comics_comics_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AltTitle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AltTitle) ProtoMessage() {}
+
+func (x *AltTitle) ProtoReflect() protoreflect.Message {
+	mi := &file_comics_comics_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AltTitle.ProtoReflect.Descriptor instead.
+func (*AltTitle) Descriptor() ([]byte, []int) {
+	return file_comics_comics_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AltTitle) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *AltTitle) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+type Genre struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Genre) Reset() {
+	*x = Genre{}
+	mi := &file_comics_comics_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Genre) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Genre) ProtoMessage() {}
+
+func (x *Genre) ProtoReflect() protoreflect.Message {
+	mi := &file_comics_comics_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Genre.ProtoReflect.Descriptor instead.
+func (*Genre) Descriptor() ([]byte, []int) {
+	return file_comics_comics_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Genre) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Genre) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 type Comic struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	UserId        string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
-	Chapters      []*Chapter             `protobuf:"bytes,5,rep,name=chapters,proto3" json:"chapters,omitempty"`
+	AltTitles     []*AltTitle            `protobuf:"bytes,5,rep,name=alt_titles,json=altTitles,proto3" json:"alt_titles,omitempty"`
+	Genres        []*Genre               `protobuf:"bytes,6,rep,name=genres,proto3" json:"genres,omitempty"`
+	Chapters      []*Chapter             `protobuf:"bytes,7,rep,name=chapters,proto3" json:"chapters,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Comic) Reset() {
 	*x = Comic{}
-	mi := &file_comics_comics_proto_msgTypes[1]
+	mi := &file_comics_comics_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -122,7 +228,7 @@ func (x *Comic) String() string {
 func (*Comic) ProtoMessage() {}
 
 func (x *Comic) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[1]
+	mi := &file_comics_comics_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -135,7 +241,7 @@ func (x *Comic) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Comic.ProtoReflect.Descriptor instead.
 func (*Comic) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{1}
+	return file_comics_comics_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Comic) GetId() string {
@@ -166,6 +272,20 @@ func (x *Comic) GetStatus() string {
 	return ""
 }
 
+func (x *Comic) GetAltTitles() []*AltTitle {
+	if x != nil {
+		return x.AltTitles
+	}
+	return nil
+}
+
+func (x *Comic) GetGenres() []*Genre {
+	if x != nil {
+		return x.Genres
+	}
+	return nil
+}
+
 func (x *Comic) GetChapters() []*Chapter {
 	if x != nil {
 		return x.Chapters
@@ -184,7 +304,7 @@ type CreateComicRequest struct {
 
 func (x *CreateComicRequest) Reset() {
 	*x = CreateComicRequest{}
-	mi := &file_comics_comics_proto_msgTypes[2]
+	mi := &file_comics_comics_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -196,7 +316,7 @@ func (x *CreateComicRequest) String() string {
 func (*CreateComicRequest) ProtoMessage() {}
 
 func (x *CreateComicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[2]
+	mi := &file_comics_comics_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -209,7 +329,7 @@ func (x *CreateComicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateComicRequest.ProtoReflect.Descriptor instead.
 func (*CreateComicRequest) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{2}
+	return file_comics_comics_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateComicRequest) GetTitle() string {
@@ -242,7 +362,7 @@ type CreateComicResponse struct {
 
 func (x *CreateComicResponse) Reset() {
 	*x = CreateComicResponse{}
-	mi := &file_comics_comics_proto_msgTypes[3]
+	mi := &file_comics_comics_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -254,7 +374,7 @@ func (x *CreateComicResponse) String() string {
 func (*CreateComicResponse) ProtoMessage() {}
 
 func (x *CreateComicResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[3]
+	mi := &file_comics_comics_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -267,7 +387,7 @@ func (x *CreateComicResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateComicResponse.ProtoReflect.Descriptor instead.
 func (*CreateComicResponse) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{3}
+	return file_comics_comics_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateComicResponse) GetId() string {
@@ -286,7 +406,7 @@ type GetComicByIDRequest struct {
 
 func (x *GetComicByIDRequest) Reset() {
 	*x = GetComicByIDRequest{}
-	mi := &file_comics_comics_proto_msgTypes[4]
+	mi := &file_comics_comics_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -298,7 +418,7 @@ func (x *GetComicByIDRequest) String() string {
 func (*GetComicByIDRequest) ProtoMessage() {}
 
 func (x *GetComicByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[4]
+	mi := &file_comics_comics_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,7 +431,7 @@ func (x *GetComicByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetComicByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetComicByIDRequest) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{4}
+	return file_comics_comics_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetComicByIDRequest) GetId() string {
@@ -330,7 +450,7 @@ type ComicList struct {
 
 func (x *ComicList) Reset() {
 	*x = ComicList{}
-	mi := &file_comics_comics_proto_msgTypes[5]
+	mi := &file_comics_comics_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -342,7 +462,7 @@ func (x *ComicList) String() string {
 func (*ComicList) ProtoMessage() {}
 
 func (x *ComicList) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[5]
+	mi := &file_comics_comics_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +475,7 @@ func (x *ComicList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComicList.ProtoReflect.Descriptor instead.
 func (*ComicList) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{5}
+	return file_comics_comics_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ComicList) GetComics() []*Comic {
@@ -373,7 +493,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_comics_comics_proto_msgTypes[6]
+	mi := &file_comics_comics_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -385,7 +505,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[6]
+	mi := &file_comics_comics_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -398,7 +518,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{6}
+	return file_comics_comics_proto_rawDescGZIP(), []int{8}
 }
 
 type UpdateComicRequest struct {
@@ -412,7 +532,7 @@ type UpdateComicRequest struct {
 
 func (x *UpdateComicRequest) Reset() {
 	*x = UpdateComicRequest{}
-	mi := &file_comics_comics_proto_msgTypes[7]
+	mi := &file_comics_comics_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -424,7 +544,7 @@ func (x *UpdateComicRequest) String() string {
 func (*UpdateComicRequest) ProtoMessage() {}
 
 func (x *UpdateComicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[7]
+	mi := &file_comics_comics_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -437,7 +557,7 @@ func (x *UpdateComicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateComicRequest.ProtoReflect.Descriptor instead.
 func (*UpdateComicRequest) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{7}
+	return file_comics_comics_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateComicRequest) GetId() string {
@@ -470,7 +590,7 @@ type DeleteComicRequest struct {
 
 func (x *DeleteComicRequest) Reset() {
 	*x = DeleteComicRequest{}
-	mi := &file_comics_comics_proto_msgTypes[8]
+	mi := &file_comics_comics_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -482,7 +602,7 @@ func (x *DeleteComicRequest) String() string {
 func (*DeleteComicRequest) ProtoMessage() {}
 
 func (x *DeleteComicRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[8]
+	mi := &file_comics_comics_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -495,7 +615,7 @@ func (x *DeleteComicRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteComicRequest.ProtoReflect.Descriptor instead.
 func (*DeleteComicRequest) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{8}
+	return file_comics_comics_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeleteComicRequest) GetId() string {
@@ -515,13 +635,22 @@ const file_comics_comics_proto_rawDesc = "" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
 	"\x06number\x18\x03 \x01(\x05R\x06number\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\"\x8b\x01\n" +
+	"\x06status\x18\x05 \x01(\tR\x06status\"0\n" +
+	"\bAltTitle\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\"+\n" +
+	"\x05Genre\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"\xe3\x01\n" +
 	"\x05Comic\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x17\n" +
 	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\tR\x06status\x12+\n" +
-	"\bchapters\x18\x05 \x03(\v2\x0f.comics.ChapterR\bchapters\"[\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12/\n" +
+	"\n" +
+	"alt_titles\x18\x05 \x03(\v2\x10.comics.AltTitleR\taltTitles\x12%\n" +
+	"\x06genres\x18\x06 \x03(\v2\r.comics.GenreR\x06genres\x12+\n" +
+	"\bchapters\x18\a \x03(\v2\x0f.comics.ChapterR\bchapters\"[\n" +
 	"\x12CreateComicRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x16\n" +
@@ -559,36 +688,40 @@ func file_comics_comics_proto_rawDescGZIP() []byte {
 	return file_comics_comics_proto_rawDescData
 }
 
-var file_comics_comics_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_comics_comics_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_comics_comics_proto_goTypes = []any{
 	(*Chapter)(nil),             // 0: comics.Chapter
-	(*Comic)(nil),               // 1: comics.Comic
-	(*CreateComicRequest)(nil),  // 2: comics.CreateComicRequest
-	(*CreateComicResponse)(nil), // 3: comics.CreateComicResponse
-	(*GetComicByIDRequest)(nil), // 4: comics.GetComicByIDRequest
-	(*ComicList)(nil),           // 5: comics.ComicList
-	(*Empty)(nil),               // 6: comics.Empty
-	(*UpdateComicRequest)(nil),  // 7: comics.UpdateComicRequest
-	(*DeleteComicRequest)(nil),  // 8: comics.DeleteComicRequest
+	(*AltTitle)(nil),            // 1: comics.AltTitle
+	(*Genre)(nil),               // 2: comics.Genre
+	(*Comic)(nil),               // 3: comics.Comic
+	(*CreateComicRequest)(nil),  // 4: comics.CreateComicRequest
+	(*CreateComicResponse)(nil), // 5: comics.CreateComicResponse
+	(*GetComicByIDRequest)(nil), // 6: comics.GetComicByIDRequest
+	(*ComicList)(nil),           // 7: comics.ComicList
+	(*Empty)(nil),               // 8: comics.Empty
+	(*UpdateComicRequest)(nil),  // 9: comics.UpdateComicRequest
+	(*DeleteComicRequest)(nil),  // 10: comics.DeleteComicRequest
 }
 var file_comics_comics_proto_depIdxs = []int32{
-	0, // 0: comics.Comic.chapters:type_name -> comics.Chapter
-	1, // 1: comics.ComicList.comics:type_name -> comics.Comic
-	2, // 2: comics.ComicsService.CreateComic:input_type -> comics.CreateComicRequest
-	4, // 3: comics.ComicsService.GetComicByID:input_type -> comics.GetComicByIDRequest
-	6, // 4: comics.ComicsService.ListComics:input_type -> comics.Empty
-	7, // 5: comics.ComicsService.UpdateComic:input_type -> comics.UpdateComicRequest
-	8, // 6: comics.ComicsService.DeleteComic:input_type -> comics.DeleteComicRequest
-	3, // 7: comics.ComicsService.CreateComic:output_type -> comics.CreateComicResponse
-	1, // 8: comics.ComicsService.GetComicByID:output_type -> comics.Comic
-	5, // 9: comics.ComicsService.ListComics:output_type -> comics.ComicList
-	6, // 10: comics.ComicsService.UpdateComic:output_type -> comics.Empty
-	6, // 11: comics.ComicsService.DeleteComic:output_type -> comics.Empty
-	7, // [7:12] is the sub-list for method output_type
-	2, // [2:7] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1,  // 0: comics.Comic.alt_titles:type_name -> comics.AltTitle
+	2,  // 1: comics.Comic.genres:type_name -> comics.Genre
+	0,  // 2: comics.Comic.chapters:type_name -> comics.Chapter
+	3,  // 3: comics.ComicList.comics:type_name -> comics.Comic
+	4,  // 4: comics.ComicsService.CreateComic:input_type -> comics.CreateComicRequest
+	6,  // 5: comics.ComicsService.GetComicByID:input_type -> comics.GetComicByIDRequest
+	8,  // 6: comics.ComicsService.ListComics:input_type -> comics.Empty
+	9,  // 7: comics.ComicsService.UpdateComic:input_type -> comics.UpdateComicRequest
+	10, // 8: comics.ComicsService.DeleteComic:input_type -> comics.DeleteComicRequest
+	5,  // 9: comics.ComicsService.CreateComic:output_type -> comics.CreateComicResponse
+	3,  // 10: comics.ComicsService.GetComicByID:output_type -> comics.Comic
+	7,  // 11: comics.ComicsService.ListComics:output_type -> comics.ComicList
+	8,  // 12: comics.ComicsService.UpdateComic:output_type -> comics.Empty
+	8,  // 13: comics.ComicsService.DeleteComic:output_type -> comics.Empty
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_comics_comics_proto_init() }
@@ -602,7 +735,7 @@ func file_comics_comics_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_comics_comics_proto_rawDesc), len(file_comics_comics_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
