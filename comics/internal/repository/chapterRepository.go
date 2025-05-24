@@ -17,7 +17,7 @@ func NewChapterRepository(db *gorm.DB) *ChapterRepository {
 }
 
 func (r *ChapterRepository) CreateChapter(ctx context.Context, chapter models.Chapter) (uint, error) {
-	if chapter.ComicID == 0 || len(chapter.Pages) == 0 {
+	if chapter.ComicID == 0 {
 		return 0, errors.New("chapter has invalid or empty fields")
 	}
 

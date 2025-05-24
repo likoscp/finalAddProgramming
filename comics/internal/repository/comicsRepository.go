@@ -30,7 +30,10 @@ func (r *ComicRepository) CreateComic(ctx context.Context, comic models.Comic) (
 
 func (r *ComicRepository) GetByID(ctx context.Context, id uint) (*models.Comic, error) {
 	var comic models.Comic
-	if err := r.db.WithContext(ctx).First(&comic, id).Error; err != nil {
+	err := r.db.WithContext(ctx).
+		Preload("Chapters").
+		First(&comic, id).Error
+	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.New("comic not found")
 		}
@@ -39,13 +42,20 @@ func (r *ComicRepository) GetByID(ctx context.Context, id uint) (*models.Comic, 
 	return &comic, nil
 }
 
+
 func (r *ComicRepository) GetAllComics(ctx context.Context) ([]models.Comic, error) {
 	var comics []models.Comic
-	if err := r.db.WithContext(ctx).Find(&comics).Error; err != nil {
+
+	err := r.db.WithContext(ctx).
+		Preload("Chapters").
+		Find(&comics).Error
+	if err != nil {
 		return nil, err
 	}
+
 	return comics, nil
 }
+
 
 func (r *ComicRepository) UpdateComic(ctx context.Context, id uint, updated models.Comic) error {
 	var comic models.Comic
