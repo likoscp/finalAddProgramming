@@ -28,14 +28,22 @@ func NewComicGRPCHandler(service *service.ComicsService /*, natsPublisher *nats.
 }
 
 func (h *ComicGRPCHandler) CreateComic(ctx context.Context, req *comicpb.CreateComicRequest) (*comicpb.CreateComicResponse, error) {
-	userID, err := strconv.ParseUint(req.UserId, 10, 64)
+	translator_id, err := strconv.ParseUint(req.TranslatorId, 10, 64)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid user id format: %v", err)
 	}
 
 	comic := models.Comic{
-		TranslatorID: uint(userID),
+		TranslatorID: uint(translator_id),
 		Status:       req.Status,
+		Title:        req.Title,
+		Description:  req.Description,
+		CoverImage:   req.CoverImage,
+		ComicReleaseDate: time.Time{}, 
+		CreatedAt:    time.Now(),
+		UpdatedAt:    time.Now(),
+		Views:        0,
+		Rating:       0.0,
 	}
 
 	id, err := h.service.CreateComic(ctx, comic)

@@ -942,12 +942,19 @@ func (*Empty) Descriptor() ([]byte, []int) {
 }
 
 type UpdateComicRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Status        string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	AuthorId         string                 `protobuf:"bytes,2,opt,name=author_id,json=authorId,proto3" json:"author_id,omitempty"`
+	TranslatorId     string                 `protobuf:"bytes,3,opt,name=translator_id,json=translatorId,proto3" json:"translator_id,omitempty"`
+	ArtistId         string                 `protobuf:"bytes,4,opt,name=artist_id,json=artistId,proto3" json:"artist_id,omitempty"`
+	Title            string                 `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Description      string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
+	CoverImage       string                 `protobuf:"bytes,7,opt,name=cover_image,json=coverImage,proto3" json:"cover_image,omitempty"`
+	GenreIds         []string               `protobuf:"bytes,8,rep,name=genre_ids,json=genreIds,proto3" json:"genre_ids,omitempty"`
+	Status           string                 `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
+	ComicReleaseDate string                 `protobuf:"bytes,10,opt,name=comic_release_date,json=comicReleaseDate,proto3" json:"comic_release_date,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *UpdateComicRequest) Reset() {
@@ -987,6 +994,27 @@ func (x *UpdateComicRequest) GetId() string {
 	return ""
 }
 
+func (x *UpdateComicRequest) GetAuthorId() string {
+	if x != nil {
+		return x.AuthorId
+	}
+	return ""
+}
+
+func (x *UpdateComicRequest) GetTranslatorId() string {
+	if x != nil {
+		return x.TranslatorId
+	}
+	return ""
+}
+
+func (x *UpdateComicRequest) GetArtistId() string {
+	if x != nil {
+		return x.ArtistId
+	}
+	return ""
+}
+
 func (x *UpdateComicRequest) GetTitle() string {
 	if x != nil {
 		return x.Title
@@ -994,9 +1022,37 @@ func (x *UpdateComicRequest) GetTitle() string {
 	return ""
 }
 
+func (x *UpdateComicRequest) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *UpdateComicRequest) GetCoverImage() string {
+	if x != nil {
+		return x.CoverImage
+	}
+	return ""
+}
+
+func (x *UpdateComicRequest) GetGenreIds() []string {
+	if x != nil {
+		return x.GenreIds
+	}
+	return nil
+}
+
 func (x *UpdateComicRequest) GetStatus() string {
 	if x != nil {
 		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateComicRequest) GetComicReleaseDate() string {
+	if x != nil {
+		return x.ComicReleaseDate
 	}
 	return ""
 }
@@ -1133,11 +1189,20 @@ const file_comics_comics_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"2\n" +
 	"\tComicList\x12%\n" +
 	"\x06comics\x18\x01 \x03(\v2\r.comics.ComicR\x06comics\"\a\n" +
-	"\x05Empty\"R\n" +
+	"\x05Empty\"\xbf\x02\n" +
 	"\x12UpdateComicRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
-	"\x06status\x18\x03 \x01(\tR\x06status\"$\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
+	"\tauthor_id\x18\x02 \x01(\tR\bauthorId\x12#\n" +
+	"\rtranslator_id\x18\x03 \x01(\tR\ftranslatorId\x12\x1b\n" +
+	"\tartist_id\x18\x04 \x01(\tR\bartistId\x12\x14\n" +
+	"\x05title\x18\x05 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1f\n" +
+	"\vcover_image\x18\a \x01(\tR\n" +
+	"coverImage\x12\x1b\n" +
+	"\tgenre_ids\x18\b \x03(\tR\bgenreIds\x12\x16\n" +
+	"\x06status\x18\t \x01(\tR\x06status\x12,\n" +
+	"\x12comic_release_date\x18\n" +
+	" \x01(\tR\x10comicReleaseDate\"$\n" +
 	"\x12DeleteComicRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id2\xb7\x02\n" +
 	"\rComicsService\x12F\n" +

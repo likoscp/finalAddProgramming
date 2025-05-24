@@ -111,8 +111,15 @@ message Empty {}
 
 message UpdateComicRequest {
   string id = 1;
-  string title = 2;
-  string status = 3;
+  string author_id = 2;
+  string translator_id = 3;
+  string artist_id = 4;
+  string title = 5;
+  string description = 6;
+  string cover_image = 7;
+  repeated string genre_ids = 8;
+  string status = 9;
+  string comic_release_date = 10;
 }
 
 message DeleteComicRequest {

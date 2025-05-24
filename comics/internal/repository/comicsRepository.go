@@ -17,7 +17,7 @@ func NewComicRepository(db *gorm.DB) *ComicRepository {
 }
 
 func (r *ComicRepository) CreateComic(ctx context.Context, comic models.Comic) (uint, error) {
-	if comic.TranslatorID == 0 || comic.Title == "" || comic.CoverImage == "" {
+	if  comic.Title == ""  {
 		return 0, errors.New("comic has invalid or empty fields")
 	}
 
@@ -53,9 +53,6 @@ func (r *ComicRepository) UpdateComic(ctx context.Context, id uint, updated mode
 		return err
 	}
 	updated.ID = id
-	if updated.TranslatorID == 0 || updated.Title == "" || updated.CoverImage == "" {
-		return errors.New("comic has invalid or empty fields")
-	}
 	return r.db.WithContext(ctx).Save(&updated).Error
 }
 
