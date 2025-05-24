@@ -21,82 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Chapter struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Number        int32                  `protobuf:"varint,3,opt,name=number,proto3" json:"number,omitempty"`
-	Description   string                 `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Status        string                 `protobuf:"bytes,5,opt,name=status,proto3" json:"status,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Chapter) Reset() {
-	*x = Chapter{}
-	mi := &file_comics_comics_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Chapter) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Chapter) ProtoMessage() {}
-
-func (x *Chapter) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Chapter.ProtoReflect.Descriptor instead.
-func (*Chapter) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *Chapter) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *Chapter) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *Chapter) GetNumber() int32 {
-	if x != nil {
-		return x.Number
-	}
-	return 0
-}
-
-func (x *Chapter) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *Chapter) GetStatus() string {
-	if x != nil {
-		return x.Status
-	}
-	return ""
-}
-
 type AltTitle struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -107,7 +31,7 @@ type AltTitle struct {
 
 func (x *AltTitle) Reset() {
 	*x = AltTitle{}
-	mi := &file_comics_comics_proto_msgTypes[1]
+	mi := &file_comics_comics_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -119,7 +43,7 @@ func (x *AltTitle) String() string {
 func (*AltTitle) ProtoMessage() {}
 
 func (x *AltTitle) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[1]
+	mi := &file_comics_comics_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -132,7 +56,7 @@ func (x *AltTitle) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AltTitle.ProtoReflect.Descriptor instead.
 func (*AltTitle) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{1}
+	return file_comics_comics_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AltTitle) GetId() string {
@@ -159,7 +83,7 @@ type Genre struct {
 
 func (x *Genre) Reset() {
 	*x = Genre{}
-	mi := &file_comics_comics_proto_msgTypes[2]
+	mi := &file_comics_comics_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +95,7 @@ func (x *Genre) String() string {
 func (*Genre) ProtoMessage() {}
 
 func (x *Genre) ProtoReflect() protoreflect.Message {
-	mi := &file_comics_comics_proto_msgTypes[2]
+	mi := &file_comics_comics_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +108,7 @@ func (x *Genre) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Genre.ProtoReflect.Descriptor instead.
 func (*Genre) Descriptor() ([]byte, []int) {
-	return file_comics_comics_proto_rawDescGZIP(), []int{2}
+	return file_comics_comics_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Genre) GetId() string {
@@ -201,17 +125,102 @@ func (x *Genre) GetName() string {
 	return ""
 }
 
-type Comic struct {
+type Chapter struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	UserId        string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Status        string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
-	AltTitles     []*AltTitle            `protobuf:"bytes,5,rep,name=alt_titles,json=altTitles,proto3" json:"alt_titles,omitempty"`
-	Genres        []*Genre               `protobuf:"bytes,6,rep,name=genres,proto3" json:"genres,omitempty"`
-	Chapters      []*Chapter             `protobuf:"bytes,7,rep,name=chapters,proto3" json:"chapters,omitempty"`
+	Number        float64                `protobuf:"fixed64,3,opt,name=number,proto3" json:"number,omitempty"`
+	Likes         int32                  `protobuf:"varint,4,opt,name=likes,proto3" json:"likes,omitempty"`
+	Dislikes      int32                  `protobuf:"varint,5,opt,name=dislikes,proto3" json:"dislikes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Chapter) Reset() {
+	*x = Chapter{}
+	mi := &file_comics_comics_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Chapter) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Chapter) ProtoMessage() {}
+
+func (x *Chapter) ProtoReflect() protoreflect.Message {
+	mi := &file_comics_comics_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Chapter.ProtoReflect.Descriptor instead.
+func (*Chapter) Descriptor() ([]byte, []int) {
+	return file_comics_comics_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *Chapter) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Chapter) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Chapter) GetNumber() float64 {
+	if x != nil {
+		return x.Number
+	}
+	return 0
+}
+
+func (x *Chapter) GetLikes() int32 {
+	if x != nil {
+		return x.Likes
+	}
+	return 0
+}
+
+func (x *Chapter) GetDislikes() int32 {
+	if x != nil {
+		return x.Dislikes
+	}
+	return 0
+}
+
+type Comic struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	AuthorId         string                 `protobuf:"bytes,2,opt,name=author_id,json=authorId,proto3" json:"author_id,omitempty"`
+	TranslatorId     string                 `protobuf:"bytes,3,opt,name=translator_id,json=translatorId,proto3" json:"translator_id,omitempty"`
+	ArtistId         string                 `protobuf:"bytes,4,opt,name=artist_id,json=artistId,proto3" json:"artist_id,omitempty"`
+	Title            string                 `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`
+	Description      string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
+	CoverImage       string                 `protobuf:"bytes,7,opt,name=cover_image,json=coverImage,proto3" json:"cover_image,omitempty"`
+	Status           string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	ComicReleaseDate string                 `protobuf:"bytes,9,opt,name=comic_release_date,json=comicReleaseDate,proto3" json:"comic_release_date,omitempty"`
+	CreatedAt        string                 `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt        string                 `protobuf:"bytes,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	Views            int32                  `protobuf:"varint,12,opt,name=views,proto3" json:"views,omitempty"`
+	Rating           float64                `protobuf:"fixed64,13,opt,name=rating,proto3" json:"rating,omitempty"`
+	AltTitles        []*AltTitle            `protobuf:"bytes,14,rep,name=alt_titles,json=altTitles,proto3" json:"alt_titles,omitempty"`
+	Genres           []*Genre               `protobuf:"bytes,15,rep,name=genres,proto3" json:"genres,omitempty"`
+	Chapters         []*Chapter             `protobuf:"bytes,16,rep,name=chapters,proto3" json:"chapters,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *Comic) Reset() {
@@ -251,6 +260,27 @@ func (x *Comic) GetId() string {
 	return ""
 }
 
+func (x *Comic) GetAuthorId() string {
+	if x != nil {
+		return x.AuthorId
+	}
+	return ""
+}
+
+func (x *Comic) GetTranslatorId() string {
+	if x != nil {
+		return x.TranslatorId
+	}
+	return ""
+}
+
+func (x *Comic) GetArtistId() string {
+	if x != nil {
+		return x.ArtistId
+	}
+	return ""
+}
+
 func (x *Comic) GetTitle() string {
 	if x != nil {
 		return x.Title
@@ -258,9 +288,16 @@ func (x *Comic) GetTitle() string {
 	return ""
 }
 
-func (x *Comic) GetUserId() string {
+func (x *Comic) GetDescription() string {
 	if x != nil {
-		return x.UserId
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Comic) GetCoverImage() string {
+	if x != nil {
+		return x.CoverImage
 	}
 	return ""
 }
@@ -270,6 +307,41 @@ func (x *Comic) GetStatus() string {
 		return x.Status
 	}
 	return ""
+}
+
+func (x *Comic) GetComicReleaseDate() string {
+	if x != nil {
+		return x.ComicReleaseDate
+	}
+	return ""
+}
+
+func (x *Comic) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Comic) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
+func (x *Comic) GetViews() int32 {
+	if x != nil {
+		return x.Views
+	}
+	return 0
+}
+
+func (x *Comic) GetRating() float64 {
+	if x != nil {
+		return x.Rating
+	}
+	return 0
 }
 
 func (x *Comic) GetAltTitles() []*AltTitle {
@@ -629,28 +701,41 @@ var File_comics_comics_proto protoreflect.FileDescriptor
 
 const file_comics_comics_proto_rawDesc = "" +
 	"\n" +
-	"\x13comics/comics.proto\x12\x06comics\"\x81\x01\n" +
-	"\aChapter\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
-	"\x06number\x18\x03 \x01(\x05R\x06number\x12 \n" +
-	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x16\n" +
-	"\x06status\x18\x05 \x01(\tR\x06status\"0\n" +
+	"\x13comics/comics.proto\x12\x06comics\"0\n" +
 	"\bAltTitle\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\"+\n" +
 	"\x05Genre\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"\xe3\x01\n" +
-	"\x05Comic\x12\x0e\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"y\n" +
+	"\aChapter\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x16\n" +
-	"\x06status\x18\x04 \x01(\tR\x06status\x12/\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
+	"\x06number\x18\x03 \x01(\x01R\x06number\x12\x14\n" +
+	"\x05likes\x18\x04 \x01(\x05R\x05likes\x12\x1a\n" +
+	"\bdislikes\x18\x05 \x01(\x05R\bdislikes\"\x86\x04\n" +
+	"\x05Comic\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
+	"\tauthor_id\x18\x02 \x01(\tR\bauthorId\x12#\n" +
+	"\rtranslator_id\x18\x03 \x01(\tR\ftranslatorId\x12\x1b\n" +
+	"\tartist_id\x18\x04 \x01(\tR\bartistId\x12\x14\n" +
+	"\x05title\x18\x05 \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x1f\n" +
+	"\vcover_image\x18\a \x01(\tR\n" +
+	"coverImage\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\x12,\n" +
+	"\x12comic_release_date\x18\t \x01(\tR\x10comicReleaseDate\x12\x1d\n" +
 	"\n" +
-	"alt_titles\x18\x05 \x03(\v2\x10.comics.AltTitleR\taltTitles\x12%\n" +
-	"\x06genres\x18\x06 \x03(\v2\r.comics.GenreR\x06genres\x12+\n" +
-	"\bchapters\x18\a \x03(\v2\x0f.comics.ChapterR\bchapters\"[\n" +
+	"created_at\x18\n" +
+	" \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\v \x01(\tR\tupdatedAt\x12\x14\n" +
+	"\x05views\x18\f \x01(\x05R\x05views\x12\x16\n" +
+	"\x06rating\x18\r \x01(\x01R\x06rating\x12/\n" +
+	"\n" +
+	"alt_titles\x18\x0e \x03(\v2\x10.comics.AltTitleR\taltTitles\x12%\n" +
+	"\x06genres\x18\x0f \x03(\v2\r.comics.GenreR\x06genres\x12+\n" +
+	"\bchapters\x18\x10 \x03(\v2\x0f.comics.ChapterR\bchapters\"[\n" +
 	"\x12CreateComicRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x16\n" +
@@ -690,9 +775,9 @@ func file_comics_comics_proto_rawDescGZIP() []byte {
 
 var file_comics_comics_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_comics_comics_proto_goTypes = []any{
-	(*Chapter)(nil),             // 0: comics.Chapter
-	(*AltTitle)(nil),            // 1: comics.AltTitle
-	(*Genre)(nil),               // 2: comics.Genre
+	(*AltTitle)(nil),            // 0: comics.AltTitle
+	(*Genre)(nil),               // 1: comics.Genre
+	(*Chapter)(nil),             // 2: comics.Chapter
 	(*Comic)(nil),               // 3: comics.Comic
 	(*CreateComicRequest)(nil),  // 4: comics.CreateComicRequest
 	(*CreateComicResponse)(nil), // 5: comics.CreateComicResponse
@@ -703,9 +788,9 @@ var file_comics_comics_proto_goTypes = []any{
 	(*DeleteComicRequest)(nil),  // 10: comics.DeleteComicRequest
 }
 var file_comics_comics_proto_depIdxs = []int32{
-	1,  // 0: comics.Comic.alt_titles:type_name -> comics.AltTitle
-	2,  // 1: comics.Comic.genres:type_name -> comics.Genre
-	0,  // 2: comics.Comic.chapters:type_name -> comics.Chapter
+	0,  // 0: comics.Comic.alt_titles:type_name -> comics.AltTitle
+	1,  // 1: comics.Comic.genres:type_name -> comics.Genre
+	2,  // 2: comics.Comic.chapters:type_name -> comics.Chapter
 	3,  // 3: comics.ComicList.comics:type_name -> comics.Comic
 	4,  // 4: comics.ComicsService.CreateComic:input_type -> comics.CreateComicRequest
 	6,  // 5: comics.ComicsService.GetComicByID:input_type -> comics.GetComicByIDRequest

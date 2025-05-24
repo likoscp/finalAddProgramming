@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/likoscp/final/comics/internal/config"
-	"github.com/likoscp/final/comics/internal/server"
+	"github.com/likoscp/finalAddProgramming/comics/internal/config"
+	"github.com/likoscp/finalAddProgramming/comics/internal/server"
 	log "github.com/sirupsen/logrus"
 )
 
