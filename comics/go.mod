@@ -18,7 +18,7 @@ require (
 )
 
 require (
-	github.com/likoscp/finalAddProgramming/finalProto v0.0.0-20250524184830-0bb8a68afca5
+	github.com/likoscp/finalAddProgramming/finalProto v0.0.0-20250524191904-e8099babf998
 	github.com/sirupsen/logrus v1.9.3
 	golang.org/x/sys v0.32.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250218202821-56aae31c358a // indirect

@@ -51,3 +51,15 @@ func (s *ChaptersService) DeleteChapter(ctx context.Context, id uint) error {
 func (s *ChaptersService) GetChaptersByUserID(ctx context.Context, comicID uint) ([]models.Chapter, error) {
 	return s.repo.GetChaptersByUserID(ctx, comicID)
 }
+
+func (s *ChaptersService) AddPageToChapter(ctx context.Context, chapterID uint, page models.Page) (uint, error) {
+	chapter, err := s.repo.GetByID(ctx, chapterID)
+	if err != nil {
+		return 0, errors.New("chapter not found")
+	}
+	if chapter.ID == 0 {
+		return 0, errors.New("invalid chapter ID")
+	}
+	page.ChapterID = chapterID
+	return s.repo.AddPageToChapter(ctx, chapterID, page.ImageURL, int32(page.PageNum))
+}

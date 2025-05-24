@@ -70,3 +70,16 @@ func (r *ChapterRepository) GetChaptersByUserID(ctx context.Context, userID uint
 	}
 	return chapters, nil
 }
+
+func (r *ChapterRepository) AddPageToChapter(ctx context.Context, chapterID uint, imageURL string, pageNum int32) (uint, error) {
+	page := models.Page{
+		ChapterID: chapterID,
+		ImageURL:  imageURL,
+		PageNum:   int(pageNum),
+	}
+	err := r.db.WithContext(ctx).Create(&page).Error
+	if err != nil {
+		return 0, err
+	}
+	return page.ID, nil
+}
