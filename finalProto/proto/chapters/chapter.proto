@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package comics;
+package chapters;
 
 option go_package = "likoscp.chapters.v1;chaptersv1";
 
