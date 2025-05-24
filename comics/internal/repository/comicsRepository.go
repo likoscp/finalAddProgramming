@@ -53,6 +53,9 @@ func (r *ComicRepository) UpdateComic(ctx context.Context, id uint, updated mode
 		return err
 	}
 	updated.ID = id
+	if updated.TranslatorID == 0 || updated.Title == "" || updated.CoverImage == "" {
+		return errors.New("comic has invalid or empty fields")
+	}
 	return r.db.WithContext(ctx).Save(&updated).Error
 }
 

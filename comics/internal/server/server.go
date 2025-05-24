@@ -68,8 +68,7 @@ func (s *Server) StartGRPC() error {
 	// 	log.Fatalf("failed to create NATS publisher: %v", err)
 	// }
 
-	comicGRPC := grpcCustom.NewComicGRPCHandler(comicService) // publisher
-
+	comicGRPC := grpcCustom.NewComicGRPCHandler(comicService) 
 	comicsPb.RegisterComicsServiceServer(s.grpcServer, comicGRPC)
 	reflection.Register(s.grpcServer)
 

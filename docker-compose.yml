@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   nats:
     image: nats
@@ -20,6 +22,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - comics_net
 
   comics-service:
     build: 
@@ -33,20 +37,28 @@ services:
       - postgres
     env_file:
       - ./comics/.env
-    volumes:
-      - ./comics/.env:/.env 
+    networks:
+      - comics_net
 
-  producer-service:
-    build: ./producer
-    ports:
-      - "50054:50054"
-    depends_on:
-      - nats
+  # producer-service:
+  #   build: ./producer
+  #   ports:
+  #     - "50054:50054"
+  #   depends_on:
+  #     - nats
+  #   networks:
+  #     - comics_net
 
-  consumer-service:
-    build: ./consumer
-    depends_on:
-      - nats
+  # consumer-service:
+  #   build: ./consumer
+  #   depends_on:
+  #     - nats
+  #   networks:
+  #     - comics_net
 
 volumes:
   postgres_data:
+
+networks:
+  comics_net:
+    driver: bridge
